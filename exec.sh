@@ -10,7 +10,13 @@ if [ $? -ne 0 ]; then
 fi
 
 if [ ! -z $1 ]; then
-  EXEC="$SCRIPT_DIR/build/$1 $SCRIPT_DIR/$1/input.txt"
+  if [ -z $2 ]; then
+    # part number is not specified
+    echo -e "\033[31mPart number is not specified\033[0m"
+    exit 1
+  fi
+
+  EXEC="$SCRIPT_DIR/build/$1 $SCRIPT_DIR/$1/input.txt $2"
 
   echo -e "Exec: $EXEC\n"
 

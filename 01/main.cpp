@@ -1,9 +1,7 @@
 #include <common.hpp>
 
-#define PART 2
-
 int main(int argc, char** argv) {
-  std::string str = get_file(argc, argv);
+  auto [str, day, part] = aoc_init(argc, argv);
   std::string::const_iterator curr_it = str.begin();
 
   std::vector<int> cals;
@@ -24,11 +22,10 @@ int main(int argc, char** argv) {
 
   int total = 0;
 
-#if PART == 1
+if (part == 1)
   total = cals.back();
-#elif PART == 2
+else if (part == 2)
   total = std::accumulate(cals.end() - 3, cals.end(), 0);
-#endif
 
   fmt::print("{}\n", total);
   

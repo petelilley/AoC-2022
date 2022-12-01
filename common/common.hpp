@@ -44,15 +44,22 @@
  */
 std::string get_file(std::filesystem::path path = "input.txt");
 
+// --- Init stuff ---
+
+struct Init {
+  std::string file;
+  int day;
+  int part = 1;
+};
+
 /**
- * @brief Returns the contents of a file as a string. File is determined by the command line arguments.
+ * @brief Returns the initial data for the program.
  * 
- * @param argc The number of command line arguments.
- * @param argv The command line arguments.
- * @param path The default path to the file if no path is given in the command line arguments.
- * @return The contents of the file.
+ * @param argc The number of arguments.
+ * @param argv The arguments.
+ * @return A struct containing the initial data (file string, day, part).
  */
-std::string get_file(int argc, char** argv, std::filesystem::path path = "input.txt");
+Init aoc_init(int argc, char** argv);
 
 // --- Parsing Stuff ---
 

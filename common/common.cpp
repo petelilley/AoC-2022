@@ -13,16 +13,36 @@ std::string get_file(std::filesystem::path path) {
   return str;
 }
 
-std::string get_file(int argc, char** argv, std::filesystem::path path) {
-  if (argc == 2) {
-    path = argv[1];
-  }
-  else if (argc > 2) {
-    fmt::print("Usage: {} [input file]\n", argv[0]);
+Init aoc_init(int argc, char** argv) {
+  std::filesystem::path path;
+  int part = 1;
+  if (argc != 3) {
+    fmt::print("Usage: {} [input file] [part number]\n", argv[0]);
     exit(1);
   }
 
-  return get_file(path);
+  // Executable name (remove leading path)
+  std::string day_substr = std::filesystem::path(argv[0]).filename().string().substr(0, 2);
+
+  int day = std::stoi(day_substr);
+
+  if (day < 1 || day > 25) {
+    fmt::print("Error: Invalid day number: {}\n", day);
+    exit(1);
+  }
+
+  path = argv[1];
+
+  part = std::stoi(argv[2]);
+
+  if (part != 1 && part != 2) {
+    fmt::print("Error: Part number must be 1 or 2\n");
+    exit(1);
+  }
+
+  fmt::print("Init day = {}, part = {}\n\n", day, part);
+
+  return Init { get_file(path), day, part };
 }
 
 // --- Parsing Stuff ---

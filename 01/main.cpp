@@ -22,10 +22,10 @@ int main(int argc, char** argv) {
 
   int total = 0;
 
-if (part == 1)
-  total = cals.back();
-else if (part == 2)
-  total = std::accumulate(cals.end() - 3, cals.end(), 0);
+  if (part == 1)
+    total = cals.back();
+  else if (part == 2)
+    total = std::accumulate(cals.end() - 3, cals.end(), 0);
 
   fmt::print("{}\n", total);
   

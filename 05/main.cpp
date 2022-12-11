@@ -15,14 +15,12 @@ int main(int argc, char** argv) {
 
     for (int i = 0; i < 9; i++) {
       char c = line.at(1 + (4 * i));
-      if (c != ' ') {
+      if (c != ' ')
         stacks.at(i).push_back(c);
-      }
     }
   }
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < 9; i++)
     std::reverse(stacks.at(i).begin(), stacks.at(i).end());
-  }
   parse_until(curr_it, str.end(), "\n");
   curr_it += 2;
 
@@ -52,9 +50,8 @@ int main(int argc, char** argv) {
   }
 
   std::string answer = "";
-  for (auto& stack : stacks) {
+  for (auto& stack : stacks)
     answer.push_back(stack.back());
-  }
 
   fmt::print("{}\n", answer);
 

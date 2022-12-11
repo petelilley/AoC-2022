@@ -18,7 +18,6 @@ int main(int argc, char** argv) {
         return s;
       };
 
-      // split line in half at center
       parts.push_back(mysort(line.substr(0, line.size() / 2)));
       parts.push_back(mysort(line.substr(line.size() / 2)));
     }
@@ -38,16 +37,13 @@ int main(int argc, char** argv) {
                             std::back_inserter(new_in));
       in = new_in;
     }
-
-    char item = in.at(0); // should only be one item in intersection
-
     parts.clear();
 
-    if (item <= 'Z') {
-      answer += item - 'A' + 27;
-    } else {
-      answer += item - 'a' + 1;
-    }
+    answer += in.at(0);
+    if (in.at(0) <= 'Z')
+      answer += 27 - 'A';
+    else
+      answer += 1 - 'a';
   }
 
   fmt::print("{}\n", answer);

@@ -12,16 +12,13 @@ int main(int argc, char** argv) {
     char s1 = *curr_it - 'X';
     curr_it += 2;
 
-    if (part == 2) {
+    if (part == 2)
       s1 = ((s0 + 2 + s1) % 3);
-    }
 
-    if (s0 == s1) { // tie
+    if (s0 == s1) // tie
       answer += 3;
-    }
-    else if (s1 == (s0 + 1) % 3) { // win
+    else if (s1 == (s0 + 1) % 3) // win
       answer += 6;
-    }
 
     answer += s1 + 1;
   }

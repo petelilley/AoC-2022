@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
       crt[std::make_pair(c, cycle / 40)] = true;
   };
 
-  auto update_fn = [&]() {
+  auto update_fn = [&, &part = part]() {
     if (part == 1) update_sig_str();
     else if (part == 2) update_crt();
   };

@@ -7,7 +7,7 @@ int main(int argc, char** argv) {
   int answer = 0;
 
   while (curr_it != str.end()) {
-    auto parse_num = [&]() -> int {
+    auto parse_num = [&, &str = str]() -> int {
       int n = parse_double(curr_it, str.end());
       ++curr_it;
       return n;

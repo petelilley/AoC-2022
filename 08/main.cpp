@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
     auto [x, y] = p;
     int score = 1;
 
-    auto count = [&](int x_dir, int y_dir) {
+    auto count = [&, &x = x, &y = y, &d = d](int x_dir, int y_dir) {
       int prev = d;
       int c = x;
       int r = y;
@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
 
   if (part == 1)
     answer = std::accumulate(visible.begin(), visible.end(), 0, [](int acc, auto& p) {
-      return acc + (p.second ? 1 : 0);
+      return acc + p.second;
     });
 
   fmt::print("{}\n", answer);

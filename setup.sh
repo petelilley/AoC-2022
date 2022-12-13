@@ -1,11 +1,11 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-  echo "Usage: $0 <day>"
+  echo "Day number is not specified"
   exit 1
 fi
 
-SCRIPT_DIR=$(realpath $(dirname $BASH_SOURCE))
+SCRIPT_DIR=$(pwd)
 
 if [ ! -d "$SCRIPT_DIR/$1" ]; then
   cp -r "$SCRIPT_DIR/template" "$SCRIPT_DIR/$1"

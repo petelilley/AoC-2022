@@ -31,6 +31,7 @@
 #include <filesystem>
 #include <variant>
 #include <optional>
+#include <queue>
 
 #include <fmt/format.h>
 

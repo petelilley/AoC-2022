@@ -5,6 +5,7 @@ project(AoC-2022 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 file(GLOB_RECURSE COMMON_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/common/*.cpp")
 file(GLOB_RECURSE COMMON_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/common/*.hpp")
@@ -12,7 +13,7 @@ add_library(common STATIC ${COMMON_SOURCES})
 target_include_directories(common PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/common")
 target_precompile_headers(common PUBLIC ${COMMON_HEADERS})
 
-find_package(fmt CONFIG REQUIRED)
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/fmt" EXCLUDE_FROM_ALL)
 target_link_libraries(common PUBLIC fmt::fmt)
 
 set(DAYS "")
